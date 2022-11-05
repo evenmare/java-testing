@@ -1,9 +1,9 @@
 import static org.junit.Assert.*;
 
 public class StrTest {
-    private char[] correctStrData = {'a', 'b', 'c'};
+    final private char[] correctStrData = {'a', 'b', 'c'};
     private int correctStrLength;
-    private Language correctStrLanguage = Language.ENG;
+    final private Language correctStrLanguage = Language.ENG;
 
     private Str correctStr;
 
@@ -15,31 +15,31 @@ public class StrTest {
 
     @org.junit.Test
     public void getLength() {
-        assertEquals(correctStr.getLength(), correctStrLength);
+        assertEquals(correctStrLength, correctStr.getLength());
     }
 
     @org.junit.Test
     public void setLength() {
         int newLength = correctStrLength + 5;
         correctStr.setLength(newLength);
-        assertEquals(correctStr.getLength(), newLength);
+        assertEquals(newLength, correctStr.getLength());
     }
 
     @org.junit.Test
     public void getData() {
-        assertArrayEquals(correctStr.getData(), correctStrData);
+        assertArrayEquals(correctStrData, correctStr.getData());
     }
 
     @org.junit.Test
     public void getLanguage() {
-        assertEquals(correctStr.getLanguage(), correctStrLanguage);
+        assertEquals(correctStrLanguage, correctStr.getLanguage());
     }
 
     @org.junit.Test
     public void setLanguage() {
         Language newLanguage = Language.UNSET;
         correctStr.setLanguage(newLanguage);
-        assertEquals(correctStr.getLanguage(), newLanguage);
+        assertEquals(newLanguage, correctStr.getLanguage());
     }
 
     @org.junit.Test
@@ -48,9 +48,9 @@ public class StrTest {
 
         Str mergedStr = Str.merge(correctStr, correctStr);
 
-        assertEquals(mergedStr.getLength(), correctStrLength * 2);
-        assertArrayEquals(mergedStr.getData(), expectedData);
-        assertEquals(mergedStr.getLanguage(), correctStrLanguage);
+        assertEquals(correctStrLength * 2, mergedStr.getLength());
+        assertArrayEquals(expectedData, mergedStr.getData());
+        assertEquals(correctStrLanguage, mergedStr.getLanguage());
     }
 
     @org.junit.Test
@@ -58,14 +58,14 @@ public class StrTest {
         char[] emptyData = {};
         Str emptyStr = new Str(0, emptyData, correctStrLanguage);
 
-        assertEquals(emptyStr.getLength(), 0);
-        assertArrayEquals(emptyStr.getData(), emptyData);
+        assertEquals(0, emptyStr.getLength());
+        assertArrayEquals(emptyData, emptyStr.getData());
     }
 
     @org.junit.Test(expected = NegativeArraySizeException.class)
     public void testNegativeLengthStringCreation() {
         char[] emptyData = {};
-        Str negativeStr = new Str(-1, emptyData, correctStrLanguage);
+        new Str(-1, emptyData, correctStrLanguage);
     }
 
     @org.junit.Test
@@ -75,7 +75,7 @@ public class StrTest {
 
         Str lengthLessStr = new Str(lengthLessStrLength, correctStrData, correctStrLanguage);
 
-        assertEquals(lengthLessStr.getLength(), lengthLessStrLength);
-        assertArrayEquals(lengthLessStr.getData(), expectedData);
+        assertEquals(lengthLessStrLength, lengthLessStr.getLength());
+        assertArrayEquals(expectedData, lengthLessStr.getData());
     }
 }
