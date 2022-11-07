@@ -1,11 +1,11 @@
 import static org.junit.Assert.*;
 
 public class StrTest {
-    final private char[] correctStrData = {'a', 'b', 'c'};
-    private int correctStrLength;
-    final private Language correctStrLanguage = Language.ENG;
+    final char[] correctStrData = {'a', 'b', 'c'};
+    int correctStrLength;
+    final Language correctStrLanguage = Language.ENG;
 
-    private Str correctStr;
+    Str correctStr;
 
     @org.junit.Before
     public void setUp() {
