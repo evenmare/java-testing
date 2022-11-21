@@ -3,6 +3,18 @@ public class Str {
     private char[] data;
     private Language language;
 
+    public int calculateCharArrayLength(int newLength, int oldLength) {
+        int length;
+        if (oldLength > newLength) {
+            length = newLength;
+        }
+        else {
+            length = oldLength;
+        }
+
+        return length;
+    }
+
     public int getLength() {
         return length;
     }
@@ -13,7 +25,9 @@ public class Str {
 
         char[] newData = new char[newLength];
 
-        System.arraycopy(oldData, 0, newData, 0, oldLength);
+        int length = calculateCharArrayLength(newLength, oldLength);
+
+        System.arraycopy(oldData, 0, newData, 0, length);
 
         this.data = newData;
         this.length = newLength;
@@ -33,7 +47,9 @@ public class Str {
 
     public Str(int length, char[] data, Language language) {
         char[] dataWithLength = new char[length];
-        System.arraycopy(data, 0, dataWithLength, 0, length);
+
+        int copyArrayLength = calculateCharArrayLength(length, data.length);
+        System.arraycopy(data, 0, dataWithLength, 0, copyArrayLength);
 
         this.length = length;
         this.data = dataWithLength;
