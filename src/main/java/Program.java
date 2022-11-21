@@ -116,7 +116,7 @@ public class Program {
             case (3):
                 setNewLanguage();
             case (0):
-                break;
+                System.exit(0);
             default:
                 System.out.println(errorMessage);
                 selectStartChoice(inputNumber(errorMessage), errorMessage);
